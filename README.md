@@ -1,2 +1,2 @@
-This is my assisgnment 6 project.
-
+This is my note taking application project.
+<img src="erd.png">
