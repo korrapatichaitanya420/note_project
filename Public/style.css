@@ -1,0 +1,70 @@
+body{   
+  background-image: url( ./Images/Cat.jpg );
+  background-repeat: no-repeat;   
+  background-size: cover;
+  background-position: center;
+  height: 50%;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow'; 
+  text-align: center;
+}
+
+ul{
+text-transform: uppercase;
+}
+
+img{
+width: 400px;
+}
+
+form{
+  font-size: 30px;
+  line-height: 45px;
+}
+#backgroundimg{
+
+  background-image: url( ./Images/Sun.jpg );
+  background-repeat: no-repeat;   
+  background-size: 100%;
+  background-position: center;
+  background-attachment: fixed; 
+  height: 200px;
+}
+a{
+text-decoration:solid;
+}
+
+ul {
+ 
+  margin: 2px;
+  padding: 2px;
+  overflow: hidden;
+  background-color: rgb(142, 152, 93);
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+} 
+
+a:link {
+  color: #208eb3;
+}
+
+a:visited {
+  color:rgb(241, 250, 215);
+}
+
+a:hover {
+  color: #a23c91;
+}
+
+a:active {
+  color: #5d37f6;
+}
