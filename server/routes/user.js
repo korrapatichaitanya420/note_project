@@ -3,7 +3,7 @@ const User = require('../models/user');
 const router = express.Router();
 
 router
-  .get('/', async (req, res) => {
+  .get('/getNote', async (req, res) => {
     try {
       const users = await User.getAllUsers();
       res.send(users);
@@ -23,6 +23,7 @@ router
 
   .post('/register', async (req, res) => {
     try {
+      console.log(req);
       let user = await User.register(req.body);
       res.send({...user, password: undefined})
     } catch(err) {
@@ -47,8 +48,5 @@ router
       res.status(401).send({message: err.message})
     }
   })
-
-
-
   
 module.exports = router;
