@@ -7,21 +7,22 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <ul>
-        <li><a href="./registration.html">HOME</a></li>
-        <li><a href="./login.html">LOGIN</a></li>
-        <li><a href="./note.html">NOTES</a></li>
-    </ul>
+    <header>
+        <nav>
+          <ul>
+            <button type="submit" id="logout-btn">logout</button>
+          </ul>
+        </nav>
+      </header>
     <center>
     <h1><u>ENTER YOUR NOTES HERE!<u></h1>
     <form id="nForm">        
         <textarea id="note" cols="50" rows="20" form="nForm"></textarea>
         <br> 
+        <button type="submit">submit</button>
         
-        <input type="submit"  name="submit">
-        <button type="submit" id="btn-users"> get all notes</button>
     </center>
     </form>
-    <script src="mainproject.js"></script>
+    <script src="scripts/mainproject.js"></script>
 </body>
 </html>
