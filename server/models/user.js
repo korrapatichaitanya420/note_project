@@ -1,12 +1,12 @@
-const con = require("./db");
+const con = require("./db.js");
 
 // Table Creation 
 async function createTable() {
   let sql=`CREATE TABLE IF NOT EXISTS users (
     userID INT NOT NULL AUTO_INCREMENT,
-    userName VARCHAR(255) NOT NULL UNIQUE,
     userFname VARCHAR(255),
     userLname VARCHAR(255),
+    Email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     CONSTRAINT userPK PRIMARY KEY(userID)
   ); `
@@ -23,12 +23,13 @@ async function getAllUsers() {
 
 // Create  User - Registering
 async function register(user) {
+  console.log(user)
   let cUser = await getUser(user);
-  if(cUser.length > 0) throw Error("Username already in use");
+  if(cUser.length > 0) throw Error("User already in use");
 
-  const sql = `INSERT INTO users (userName, password)
-    VALUES ("${user.userName}", "${user.password}");
-  `
+  const sql = `INSERT INTO users (userFname, userLname, email, password)
+    VALUES ("${user.firstName}","${user.lastName}","${user.email}", "${user.password}");
+  `;
   await con.query(sql);
   return await login(user);
 }
@@ -36,8 +37,8 @@ async function register(user) {
 // Read User -- login user
 async function login(user) { // {userName: "sda", password: "gsdhjsga"}
   let cUser = await getUser(user); //[{userName: "cathy123", password: "icecream"}]
-  
-  if(!cUser[0]) throw Error("Username not found");
+ console.log("cUser",cUser);
+  if(!cUser[0]) throw Error("User not found");
   if(cUser[0].password !== user.password) throw Error("Password incorrect");
 
   return cUser[0];
@@ -46,7 +47,7 @@ async function login(user) { // {userName: "sda", password: "gsdhjsga"}
 // Update User function
 async function editUser(user) {
   let sql = `UPDATE users 
-    SET userName = "${user.userName}"
+    SET Email = "${user.email}"
     WHERE userID = ${user.userID}
   `;
 
@@ -75,9 +76,10 @@ async function getUser(user) {
   } else {
     sql = `
     SELECT * FROM users 
-      WHERE userName = "${user.userName}"
+      WHERE Email= "${user.email}"
   `;
   }
+  console.log("user:::::::::::::",user,":::::::::::sql:::::::::",sql)
   return await con.query(sql);  
 }
 
